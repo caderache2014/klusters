@@ -1,6 +1,7 @@
 ENV["RAILS_ENV"] ||= "test"
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
+require "minitest/rails/capybara"
 
 class ActiveSupport::TestCase
   ActiveRecord::Migration.check_pending!
@@ -12,4 +13,17 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+end
+
+class FeatureSpec < MiniTest::Spec
+  require "capybara/poltergeist"
+  include Capybara::DSL
+  Capybara.default_driver = :poltergeist
+end
+
+class ActionDispatch::IntegrationTest
+  require "capybara/poltergeist"
+  include Capybara::DSL
+  Capybara.default_driver = :poltergeist
+  include Capybara::Assertions
 end

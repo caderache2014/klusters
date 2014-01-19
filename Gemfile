@@ -43,3 +43,14 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+# Use capybara and poltergeist for test purposes
+gem "minitest-rails-capybara"
+gem 'poltergeist', group: [:development, :test]
+
+# Use rubocop so we can strive for clean code
+gem 'rubocop', group: [:development, :test]
+
+group :development, :test do
+  gem 'minitest-rails'
+end
