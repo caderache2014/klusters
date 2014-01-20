@@ -3,6 +3,13 @@
 ## Summary
 
 ## Development To-Do
+- Integrate Zurb Foundation
+
+- Add authentication and user profiles
+
+- Add file upload functionality
+
+- Use Amazon Web Services for blob storage
 
 ## Project References
 
