@@ -61,3 +61,4 @@ group :development, :test do
 end
 
 gem 'zurb-foundation'
+gem 'devise'
