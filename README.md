@@ -22,6 +22,8 @@ References will be added on an ongoing basis as the project progresses:
 
 - Public Datasets: http://aws.amazon.com/datasets?_encoding=UTF8&jiveRedirect=1
 
+- AWS with PaperClip: https://devcenter.heroku.com/articles/paperclip-s3
+
 					
 
 =======

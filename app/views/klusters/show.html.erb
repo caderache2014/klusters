@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @kluster.name %>
+</p>
+
+<p>
+  <strong>Document Title:</strong>
+  <%= @kluster.document_title %>
+</p>
+<p>
+  <strong>Document Description:</strong>
+  <%= @kluster.document_description %>
+</p>
+
+<p>
+  <strong>Document:</strong>
+  <%= image_tag @kluster.document.url(:large) %>
+</p>
+
+
+<%= link_to 'Edit', edit_kluster_path(@kluster) %> |
+<%= link_to 'Back', klusters_path %>

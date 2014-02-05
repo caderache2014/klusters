@@ -1,0 +1,36 @@
+<%= form_for(@kluster) do |f| %>
+  <% if @kluster.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@kluster.errors.count, "error") %> prohibited this kluster from being saved:</h2>
+
+      <ul>
+      <% @kluster.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+	<div id="base" style="width:40em;">
+		<div class="field">
+  	  <%= f.label :name %><br />
+  	  <%= f.text_field :name %>
+  	</div>
+  	<div class="field">
+  	  <%= f.label :document_title %><br />
+  	  <%= f.text_field :document_title %>
+  	</div>
+  	<div class="field">
+  	  <%= f.label :document_description %><br />
+  	  <%= f.text_field :document_description %>
+  	</div>
+ 		<div class="field">
+			<%= f.label :documents, 'Upload Document', :class => 'gfield_label' %> <span style="color: #C31E2D;"> (4 MB maximum size per attachment)</span>.
+		</div>
+ 		<div class="field">		
+			<%= f.file_field :document %></p>
+		</div>		
+  	<div class="actions">
+  	  <%= f.submit %>
+  	</div>
+	</div>
+<% end %>
