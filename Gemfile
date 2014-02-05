@@ -46,10 +46,6 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-# Use capybara and poltergeist for test purposes
-gem "minitest-rails-capybara"
-gem 'poltergeist', group: [:development, :test]
-
 # Use rubocop so we can strive for clean code
 gem 'rubocop', group: [:development, :test]
 
@@ -67,8 +63,6 @@ group :production do
 end
 
 gem 'foundation-rails'
-
-gem 'zurb-foundation'
 gem 'devise'
 
 ruby '2.1.0'
