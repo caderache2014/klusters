@@ -59,3 +59,5 @@ gem 'rubocop', group: [:development, :test]
 group :development, :test do
   gem 'minitest-rails'
 end
+
+gem 'zurb-foundation'
