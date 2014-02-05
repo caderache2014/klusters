@@ -3,9 +3,6 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
-
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
@@ -56,9 +53,22 @@ gem 'poltergeist', group: [:development, :test]
 # Use rubocop so we can strive for clean code
 gem 'rubocop', group: [:development, :test]
 
-group :development, :test do
-  gem 'minitest-rails'
+gem 'minitest-rails'
+gem "minitest-rails-capybara"
+gem 'poltergeist'
+
+group :development do
+  gem "sqlite3"
 end
+
+group :production do
+  gem "rails_12factor"
+  gem "pg"
+end
+
+gem 'foundation-rails'
 
 gem 'zurb-foundation'
 gem 'devise'
+
+ruby '2.1.0'
