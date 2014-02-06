@@ -29,14 +29,14 @@
 		    </li>
 		  </ul>
 		  <section class="top-bar-section">
-		    <!-- Right Nav Section -->
+		    <!-- Authentication Section -->
 		    <ul class="right">
 					<% if user_signed_in? %>
-					  <li class="active"><%= link_to 'Edit profile', edit_user_registration_path %></li>
-					  <li class="active"><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+					  <li><%= link_to 'Edit profile', edit_user_registration_path %></li>
+					  <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
 					<% else %>
-					  <li class="active"><%= link_to "Sign up", new_user_registration_path %></li>
-					  <li class="active"><%= link_to "Login", new_user_session_path %></li>
+					  <li><%= link_to "Sign up", new_user_registration_path %></li>
+					  <li><%= link_to "Login", new_user_session_path %></li>
 					<% end %>
 		    </ul>
 		  </section>
@@ -44,7 +44,12 @@
 		<!-- Devise -->
 		<p class="notice"><%= notice %></p>
 		<p class="alert"><%= alert %></p>
-    <%= yield %>
+		
+		<div class="row">
+			<div class="large-12 columns">
+    		<%= yield %>
+			</div>
+		</div>
 
     
     <%= javascript_include_tag "application" %>
