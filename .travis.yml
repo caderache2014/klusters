@@ -1,15 +1,7 @@
 language: ruby
 rvm:
 - 2.1.0
-env:
-  global:
-  - secure: frWZZ0flRmFYzhH8NzlFYfLg48XUlgRfKqB7fSFzpLSpCmw5jY+ptaLrDNWQI8hIuvmtm2KeOFCvMnymRHAk+8YGAp/OCZKl6gg7XYV4nF0U28j2U/VvfBa5mXd6HaN+UOIZ++pOa8oU70AphNP/Pzf8Gmj8nMHAYhwuNsJCGP8=
-after_success:
-  - wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
-  - git remote add heroku git@heroku.com:klusters.git
-  - echo "Host heroku.com" >> ~/.ssh/config
-  - echo "   StrictHostKeyChecking no" >> ~/.ssh/config
-  - echo "   CheckHostIP no" >> ~/.ssh/config
-  - echo "   UserKnownHostsFile=/dev/null" >> ~/.ssh/config
-  - yes | heroku keys:add
-  - yes | git push heroku master
+deploy:
+  provider: heroku
+  api_key: frWZZ0flRmFYzhH8NzlFYfLg48XUlgRfKqB7fSFzpLSpCmw5jY+ptaLrDNWQI8hIuvmtm2KeOFCvMnymRHAk+8YGAp/OCZKl6gg7XYV4nF0U28j2U/VvfBa5mXd6HaN+UOIZ++pOa8oU70AphNP/Pzf8Gmj8nMHAYhwuNsJCGP8=
+  app: klusters
