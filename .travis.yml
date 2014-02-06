@@ -3,5 +3,6 @@ rvm:
 - 2.1.0
 deploy:
   provider: heroku
-  api_key: frWZZ0flRmFYzhH8NzlFYfLg48XUlgRfKqB7fSFzpLSpCmw5jY+ptaLrDNWQI8hIuvmtm2KeOFCvMnymRHAk+8YGAp/OCZKl6gg7XYV4nF0U28j2U/VvfBa5mXd6HaN+UOIZ++pOa8oU70AphNP/Pzf8Gmj8nMHAYhwuNsJCGP8=
+  api_key:
+    secure: UB+tD70tBgaV7pKaA/FBCpUDQE6ol7vDJih6awUx1vNORIa2GhjXnF9PJgbEdhxb0m87RM+El+Dr/sNXiz82p+ACxMiMnE+y4ICM5OIqlRWkohXMiRf07JMuOt85MC1OOkVVJpZyOOJRNhrziE8LKZaoacl2Nm+qfc3lNhrkbl0=
   app: klusters
