@@ -32,7 +32,6 @@
 		    <!-- Right Nav Section -->
 		    <ul class="right">
 					<% if user_signed_in? %>
-					  <li class="active">Logged in as <strong><%= current_user.email %></strong></li>
 					  <li class="active"><%= link_to 'Edit profile', edit_user_registration_path %></li>
 					  <li class="active"><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
 					<% else %>
