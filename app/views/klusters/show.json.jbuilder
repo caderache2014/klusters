@@ -1,1 +1,1 @@
-json.extract! @kluster, :id, :created_at, :updated_at
+json.extract! @kluster, :id, :name, :description, :created_at, :updated_at

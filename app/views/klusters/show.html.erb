@@ -6,19 +6,21 @@
 </p>
 
 <p>
-  <strong>Document Title:</strong>
-  <%= @kluster.document_title %>
-</p>
-<p>
-  <strong>Document Description:</strong>
-  <%= @kluster.document_description %>
+  <strong>Description:</strong>
+  <%= @kluster.description %>
 </p>
 
 <p>
-  <strong>Document:</strong>
-  <%= image_tag @kluster.document.url(:large) %>
+  <strong>Created By:</strong>
+  <%= @kluster.user %>
 </p>
 
+<p>
+  <strong>Documents in Kluster</strong>
+  <% @kluster.documents do |doc| %>
+  <% end %>
+</p>
 
 <%= link_to 'Edit', edit_kluster_path(@kluster) %> |
+<%= link_to 'Add Document to Kluster', new_document_path(@kluster) %> |
 <%= link_to 'Back', klusters_path %>

@@ -11,18 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140206032331) do
+ActiveRecord::Schema.define(version: 20140212055921) do
+
+  create_table "documents", force: true do |t|
+    t.string   "title"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "klusters", force: true do |t|
     t.string   "name"
-    t.string   "document_title"
-    t.string   "document_description"
+    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "document_file_name"
-    t.string   "document_content_type"
-    t.integer  "document_file_size"
-    t.datetime "document_updated_at"
   end
 
   create_table "users", force: true do |t|

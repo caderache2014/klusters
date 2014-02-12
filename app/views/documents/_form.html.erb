@@ -1,10 +1,10 @@
-<%= form_for(@kluster) do |f| %>
-  <% if @kluster.errors.any? %>
+<%= form_for(@document) do |f| %>
+  <% if @document.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@kluster.errors.count, "error") %> prohibited this kluster from being saved:</h2>
+      <h2><%= pluralize(@document.errors.count, "error") %> prohibited this document from being saved:</h2>
 
       <ul>
-      <% @kluster.errors.full_messages.each do |msg| %>
+      <% @document.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
   </div>
   <div class="field">
     <%= f.label :description %><br>

@@ -1,26 +1,21 @@
 <h1>Listing klusters</h1>
 
-<table style="width:100%">
+<table>
   <thead>
     <tr>
-      <th style="text-align:left;width:9em;">Document</th>
-      <th style="text-align:left;width:10em">Name</th>
-      <th style="width:10em">Title</th>
-      <th style="width:25em">Description</th>
-       <th style="width:2em"></th>
-      <th style="width:2em"></th>
-      <th style="width:2em"></th>
-
+      <th>Name</th>
+      <th>Description</th>
+      <th></th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
 
   <tbody>
     <% @klusters.each do |kluster| %>
       <tr>
-				<td><%=image_tag kluster.document.url(:thumb)%>
-				<td><%=kluster.name%>
-				<td><%=kluster.document_title%>
-				<td><%=kluster.document_description%>
+        <td><%= kluster.name %></td>
+        <td><%= kluster.description %></td>
         <td><%= link_to 'Show', kluster %></td>
         <td><%= link_to 'Edit', edit_kluster_path(kluster) %></td>
         <td><%= link_to 'Destroy', kluster, method: :delete, data: { confirm: 'Are you sure?' } %></td>

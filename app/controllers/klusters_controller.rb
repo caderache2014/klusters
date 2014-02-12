@@ -15,8 +15,6 @@ class KlustersController < ApplicationController
   # GET /klusters/new
   def new
     @kluster = Kluster.new
-    #1.times {@kluster.documents.build }
-    
   end
 
   # GET /klusters/1/edit
@@ -71,10 +69,6 @@ class KlustersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def kluster_params
-      #params[:kluster]
-      #Xparams.require(:kluster).permit(:name,:document_title,:documents,params[:kluster][:documents_attributes])      
-      params.require(:kluster).permit(:name,:document_title,:document)
-      #!params.require(:kluster).permit!
-      
+      params.require(:kluster).permit(:name, :description)
     end
 end
