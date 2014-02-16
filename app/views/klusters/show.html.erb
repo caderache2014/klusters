@@ -12,15 +12,20 @@
 
 <p>
   <strong>Created By:</strong>
-  <%= @kluster.user %>
+  <%= @kluster.user.email %>
 </p>
 
 <p>
   <strong>Documents in Kluster</strong>
-  <% @kluster.documents do |doc| %>
-  <% end %>
+	<ul>
+		<% for doc in KlusterDocument.where(:kluster_id => params[:id]) %>
+				<p><%= image_tag doc.document.url(:thumb) %></p>
+				<p><%= link_to doc.document_file_name, "#{root_url}#{doc.document.url()}", :target => "_blank"%>
+				</p>
+		<%end%>
+  </ul>
 </p>
 
 <%= link_to 'Edit', edit_kluster_path(@kluster) %> |
-<%= link_to 'Add Document to Kluster', new_document_path(@kluster) %> |
+<!--%= link_to 'Add Document to Kluster', new_document_path(@kluster) %> |-->
 <%= link_to 'Back', klusters_path %>

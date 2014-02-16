@@ -12,6 +12,7 @@
   </thead>
 
   <tbody>
+	<% if !@klusters.nil?%>
     <% @klusters.each do |kluster| %>
       <tr>
         <td><%= kluster.name %></td>
@@ -21,6 +22,7 @@
         <td><%= link_to 'Destroy', kluster, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
+	<%end%>
   </tbody>
 </table>
 

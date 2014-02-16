@@ -13,14 +13,22 @@
 
 ActiveRecord::Schema.define(version: 20140212055921) do
 
-  create_table "documents", force: true do |t|
+  create_table "kluster_documents", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "kluster_id"
     t.string   "title"
     t.string   "description"
+    t.string   "document_file_name"
+    t.string   "document_content_type"
+    t.integer  "document_file_size"
+    t.datetime "document_updated_at"
+    t.datetime "document_created_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "klusters", force: true do |t|
+    t.integer  "user_id"
     t.string   "name"
     t.string   "description"
     t.datetime "created_at"

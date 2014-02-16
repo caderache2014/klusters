@@ -19,7 +19,24 @@
     <%= f.label :description %><br>
     <%= f.text_field :description %>
   </div>
+	<%= f.label :documents, 'Current Documents', :class => 'gfield_label' %>
+	
+	<% for doc in KlusterDocument.where(:kluster_id => params[:id]) %>
+			 <li><%= link_to doc.document_file_name, "#{root_url}#{doc.document.url()}", :target => "_blank"%></li>
+				<%if doc.document_file_name.nil? %>
+					<%=logger.info("@@@DOC NIL")%>
+				<%end%>
+	<%end%>
+	<br/>
+	<%= f.label :documents, "Upload Additional Documents(4MB Max)", :class => 'gfield_label' %> 	
+	<%= f.fields_for :kluster_documents do |s| %>
+		<% if s.object.new_record? %>
+			<p>
+				<%= s.file_field :document, :title => 'Title1' %>
+			</p>
+		<%end%>
+	<% end %>
   <div class="actions">
-    <%= f.submit %>
+     <div><%= f.submit "Enter", :class => "small button" %></div>
   </div>
 <% end %>

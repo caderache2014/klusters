@@ -4,7 +4,9 @@ class KlustersController < ApplicationController
   # GET /klusters
   # GET /klusters.json
   def index
-    @klusters = Kluster.all
+    logger.info("@@@@@@@Session User ID: #{current_user.id}")
+    @klusters = Kluster.where("user_id = '#{current_user.id}'")
+    #@klusters = Kluster.all
   end
 
   # GET /klusters/1
@@ -15,17 +17,21 @@ class KlustersController < ApplicationController
   # GET /klusters/new
   def new
     @kluster = Kluster.new
+    1.times{@kluster.kluster_documents.build}
   end
 
   # GET /klusters/1/edit
   def edit
+    @kluster = Kluster.find(params[:id])
+    1.times{@kluster.kluster_documents.build}
+    
   end
 
   # POST /klusters
   # POST /klusters.json
   def create
     @kluster = Kluster.new(kluster_params)
-
+    @kluster.user_id = current_user.id
     respond_to do |format|
       if @kluster.save
         format.html { redirect_to @kluster, notice: 'Kluster was successfully created.' }
@@ -69,6 +75,6 @@ class KlustersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def kluster_params
-      params.require(:kluster).permit(:name, :description)
+      params.require(:kluster).permit(:name, :description, :kluster_documents_attributes =>[:id,:document])
     end
 end
