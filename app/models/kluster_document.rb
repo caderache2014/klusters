@@ -1,7 +1,6 @@
 class KlusterDocument < ActiveRecord::Base
   belongs_to :kluster
   belongs_to :user
-  attr_accessible  :document
   has_attached_file :document,
     :path => ":rails_root/public/system/:class/:attachement/:id/:basename_:style.:extension",
     :url => "/system/:class/:attachement/:id/:basename_:style.:extension",
