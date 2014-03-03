@@ -8,6 +8,12 @@
     </ul>
   <%end%>
 </div>
+<div>
+  <% for doc in KlusterDocument.where(:user_id => current_user.id) %>
+    <p><%= image_tag doc.document.url(:thumb) %></p>
+  <%end%> 
+</div>
+
 <br />
 <div>
   <%= link_to 'New Kluster', new_kluster_path, :class => "small button" %>

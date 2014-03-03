@@ -1,8 +1,8 @@
 require "test_helper"
 
-feature "Can Access Homepage" do
-  scenario "the homepage contains the word Klusters" do
+feature "As a user I want to access the homepage" do
+  scenario "user accesses homepage successfully" do
     visit root_path
-    page.must_have_content "Klusters"
+    page.status_code.must_equal 200
   end
 end
