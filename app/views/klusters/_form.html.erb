@@ -12,14 +12,10 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
+    <%= f.label :name, "Kluster Name" %><br>
     <%= f.text_field :name %>
   </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
-  </div>
-	<%= f.label :documents, 'Current Documents', :class => 'gfield_label' %>
+	<%= f.label :documents, 'Photos in Kluster', :class => 'gfield_label' %>
 	
 	<% for doc in KlusterDocument.where(:kluster_id => params[:id]) %>
 			 <li><%= link_to doc.document_file_name, "#{root_url}#{doc.document.url()}", :target => "_blank"%></li>

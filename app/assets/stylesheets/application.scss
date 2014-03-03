@@ -12,3 +12,9 @@
  *= require foundation_and_overrides
  *= require_tree .
  */
+ .button-bar { 
+   margin-top: 1rem;
+   .button-bar-title {
+     margin-right: 1rem;
+   }
+  }
