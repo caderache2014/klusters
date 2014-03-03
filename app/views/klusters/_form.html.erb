@@ -28,15 +28,23 @@
 	<%= f.label :documents, "Documents (4MB Max)", :class => 'gfield_label' %> 	
 	<%= f.fields_for :kluster_documents do |s| %>
     <% if s.object.new_record? %>
-      <p>
-        <%= s.file_field :document, :title => 'Title1' %>
+      <p id="file-uploads">
+        <%= s.file_field :document, :title => 'File_1', :class => 'file_field' %>
+        <script type="text/javascript">
+        var fileCount = 1;
+        $(function() {
+           $("input:file").change(function (){
+             //$('#file-uploads').append('<%= s.file_field :document, :title => 'File_2', :class => 'file_field' %>');
+           });
+        });
+        </script>
       </p>
 		<%end%>
 	<% end %>
   <div class="actions">
      <div>
       <%= f.submit (f.object.new_record? ? "Create Kluster" : "Update Kluster"), :class => "small button" %>
-      <%= link_to 'Back', f.object.new_record? ? klusters_path : @kluster, :class => "small button alert" %>
+      <%= link_to 'Back', f.object.new_record? ? klusters_path : @kluster, :class => "small button" %>
      </div>
   </div>
 <% end %>

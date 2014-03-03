@@ -1,2 +1,3 @@
 <h1>Edit Kluster: <%= @kluster.name %></h1>
 <%= render 'form' %>
+<%= link_to 'Destroy Kluster', @kluster, method: :delete, :class => "small button alert", data: { confirm: "Are you sure?" } %>

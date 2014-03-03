@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Kluster Name:</strong>
   <%= @kluster.name %>
 </p>
 
@@ -16,15 +16,15 @@
 </p>
 
 <p>
-  <strong>Documents in Kluster</strong>
+  <strong>Photos in Kluster</strong>
 	<ul>
 		<% for doc in KlusterDocument.where(:kluster_id => params[:id]) %>
-				<p><%= image_tag doc.document.url(:thumb) %></p>
-				<p><%= link_to doc.document_file_name, "#{root_url}#{doc.document.url()}", :target => "_blank"%>
+				<p><%= link_to "#{image_tag doc.document.url(:thumb)}".html_safe, "#{root_url}#{doc.document.url()}", :target => "_blank"%>
 				</p>
 		<%end%>
   </ul>
 </p>
-
-<%= link_to 'Edit Kluster', edit_kluster_path(@kluster), :class => "small button" %>
-<%= link_to 'Back', klusters_path, :class => "small button alert" %>
+<div>
+  <%= link_to 'Edit Kluster', edit_kluster_path(@kluster), :class => "small button" %>
+  <%= link_to 'Back', klusters_path, :class => "small button" %>
+</div>

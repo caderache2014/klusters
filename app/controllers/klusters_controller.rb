@@ -4,9 +4,11 @@ class KlustersController < ApplicationController
   # GET /klusters
   # GET /klusters.json
   def index
-    logger.info("@@@@@@@Session User ID: #{current_user.id}")
     @klusters = Kluster.where("user_id = '#{current_user.id}'")
-    #@klusters = Kluster.all
+  end
+  
+  def my_klusters
+    @klusters = Kluster.where("user_id = '#{current_user.id}'")
   end
 
   # GET /klusters/1
@@ -32,6 +34,9 @@ class KlustersController < ApplicationController
   def create
     @kluster = Kluster.new(kluster_params)
     @kluster.user_id = current_user.id
+    @kluster.kluster_documents.each do |doc|
+      doc.user_id ||= @kluster.user_id
+    end
     respond_to do |format|
       if @kluster.save
         format.html { redirect_to @kluster, notice: 'Kluster was successfully created.' }
@@ -48,6 +53,10 @@ class KlustersController < ApplicationController
   def update
     respond_to do |format|
       if @kluster.update(kluster_params)
+        @kluster.kluster_documents.each do |doc|
+          doc.user_id ||= @kluster.user_id
+        end
+        @kluster.save
         format.html { redirect_to @kluster, notice: 'Kluster was successfully updated.' }
         format.json { head :no_content }
       else

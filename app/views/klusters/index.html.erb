@@ -1,20 +1,10 @@
-<h1>Klusters</h1>
+<h1>My Photos</h1>
 <div>
-  <% if !@klusters.nil?%>
-    <ul>
-      <% @klusters.each do |kluster| %>
-        <li><%= link_to kluster.name, kluster %></li>
-      <% end %>
-    </ul>
-  <%end%>
+  <%= link_to 'My Klusters', my_klusters_path, :class => "small button" %>
+  <%= link_to 'Create a Kluster', new_kluster_path, :class => "small button" %>
 </div>
 <div>
   <% for doc in KlusterDocument.where(:user_id => current_user.id) %>
     <p><%= image_tag doc.document.url(:thumb) %></p>
   <%end%> 
-</div>
-
-<br />
-<div>
-  <%= link_to 'New Kluster', new_kluster_path, :class => "small button" %>
 </div>
