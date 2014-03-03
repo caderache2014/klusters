@@ -15,32 +15,34 @@
     <%= f.label :name, "Kluster Name" %><br>
     <%= f.text_field :name %>
   </div>
-	<%= f.label :documents, 'Photos in Kluster', :class => 'gfield_label' %>
-	
-	<% for doc in KlusterDocument.where(:kluster_id => params[:id]) %>
-			 <%= link_to "#{image_tag doc.document.url(:thumb)}".html_safe, "#{doc.document.url()}", :target => "_blank"%>
-	<%end%>
-	<br/><br/>
-	<%= f.label :documents, "Upload a Photo", :class => 'gfield_label' %> 	
-	<%= f.fields_for :kluster_documents do |s| %>
-    <% if s.object.new_record? %>
-      <p id="file-uploads">
-        <%= s.file_field :document, :title => 'File_1', :class => 'file_field' %>
-        <script type="text/javascript">
-        var fileCount = 1;
-        $(function() {
-           $("input:file").change(function (){
-             //$('#file-uploads').append('<%= s.file_field :document, :title => 'File_2', :class => 'file_field' %>');
-           });
-        });
-        </script>
-      </p>
-		<%end%>
-	<% end %>
+  <div id="kluster-photos">
+    <%= f.label :documents, 'Photos in Kluster', :class => 'gfield_label' %>
+    <% for doc in KlusterDocument.where(:kluster_id => params[:id]) %>
+      <div class="kluster-photo" style="display: inline;">
+        <%= link_to "#{image_tag doc.document.url(:thumb)}".html_safe, "#{doc.document.url()}", :target => "_blank"%>
+        <i class="fa fa-ban delete-photo"> Delete</i>
+      </div>
+    <%end%>
+  </div>
+  <br />
+  <div id="upload-photos">
+    <%= f.fields_for :kluster_documents do |s| %>
+      <% if s.object.new_record? %>
+        <%= s.file_field :document, :name => 'kluster[kluster_documents_attributes][0][document]', :multiple => true %>
+      <% end %>
+    <% end %>
+  </div>
   <div class="actions">
      <div>
-      <%= f.submit (f.object.new_record? ? "Create Kluster" : "Update Kluster"), :class => "small button" %>
-      <%= link_to 'Back', f.object.new_record? ? klusters_path : @kluster, :class => "small button" %>
+        <%= f.submit (f.object.new_record? ? "Create Kluster" : "Update Kluster"), :class => "small button" %>
+        <%= link_to 'Back', f.object.new_record? ? klusters_path : @kluster, :class => "small button" %>
      </div>
   </div>
 <% end %>
+
+<script id="template-upload" type="text/x-tmpl">
+  <div class="upload">
+    {%=o.name%}
+    <div class="progress"></div>
+  </div>
+</script>

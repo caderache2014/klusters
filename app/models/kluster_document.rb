@@ -22,7 +22,7 @@ class KlusterDocument < ActiveRecord::Base
     :size => { :in => 0..10.megabytes },
     :content_type => { :content_type => /^image\/(jpeg|png|gif|tiff)$/ }
 
-  #validates :name,
+  # validates :name,
   #  :presence => true,
   #  :uniqueness => true
   

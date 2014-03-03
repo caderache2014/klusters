@@ -60,6 +60,8 @@ GEM
       warden (~> 1.2.3)
     erubis (2.7.0)
     execjs (2.0.2)
+    font-awesome-rails (4.0.3.1)
+      railties (>= 3.2, < 5.0)
     foundation-rails (5.0.3.1)
       railties (>= 3.1.0)
       sass (>= 3.2.0)
@@ -68,9 +70,14 @@ GEM
     jbuilder (1.5.3)
       activesupport (>= 3.0.0)
       multi_json (>= 1.2.0)
+    jquery-fileupload-rails (0.4.1)
+      actionpack (>= 3.1)
+      railties (>= 3.1)
     jquery-rails (3.0.4)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
+    jquery-ui-rails (4.2.0)
+      railties (>= 3.2.16)
     json (1.8.1)
     mail (2.5.4)
       mime-types (~> 1.16)
@@ -193,9 +200,12 @@ DEPENDENCIES
   aws-sdk
   coffee-rails (~> 4.0.0)
   devise
+  font-awesome-rails
   foundation-rails
   jbuilder (~> 1.2)
+  jquery-fileupload-rails
   jquery-rails
+  jquery-ui-rails
   minitest-rails
   minitest-rails-capybara
   paperclip

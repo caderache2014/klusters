@@ -58,7 +58,7 @@ class KlustersController < ApplicationController
         end
         @kluster.save
         format.html { redirect_to @kluster, notice: 'Kluster was successfully updated.' }
-        format.json { head :no_content }
+        format.json { render json: @kluster }
       else
         format.html { render action: 'edit' }
         format.json { render json: @kluster.errors, status: :unprocessable_entity }

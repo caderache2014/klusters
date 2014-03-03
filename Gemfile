@@ -67,3 +67,6 @@ end
 gem 'foundation-rails'
 gem 'devise'
 gem 'aws-sdk'
+gem "jquery-fileupload-rails"
+gem "font-awesome-rails"
+gem 'jquery-ui-rails'
