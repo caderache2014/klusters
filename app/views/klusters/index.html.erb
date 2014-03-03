@@ -1,31 +1,14 @@
-<h1>Listing klusters</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-	<% if !@klusters.nil?%>
-    <% @klusters.each do |kluster| %>
-      <tr>
-        <td><%= kluster.name %></td>
-        <td><%= kluster.description %></td>
-        <td><%= link_to 'Show', kluster %></td>
-        <td><%= link_to 'Edit', edit_kluster_path(kluster) %></td>
-        <td><%= link_to 'Destroy', kluster, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-	<%end%>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Kluster', new_kluster_path %>
+<h1>Klusters</h1>
+<div>
+  <% if !@klusters.nil?%>
+    <ul>
+      <% @klusters.each do |kluster| %>
+        <li><%= link_to kluster.name, kluster %></li>
+      <% end %>
+    </ul>
+  <%end%>
+</div>
+<br />
+<div>
+  <%= link_to 'New Kluster', new_kluster_path, :class => "small button" %>
+</div>
