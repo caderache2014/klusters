@@ -19,7 +19,7 @@
   <strong>Photos in Kluster</strong>
 	<ul>
 		<% for doc in KlusterDocument.where(:kluster_id => params[:id]) %>
-				<p><%= link_to "#{image_tag doc.document.url(:thumb)}".html_safe, "#{root_url}#{doc.document.url()}", :target => "_blank"%>
+				<p><%= link_to "#{image_tag doc.document.url(:thumb)}".html_safe, "#{doc.document.url()}", :target => "_blank"%>
 				</p>
 		<%end%>
   </ul>
