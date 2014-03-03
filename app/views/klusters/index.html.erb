@@ -5,6 +5,6 @@
 </div>
 <div>
   <% for doc in KlusterDocument.where(:user_id => current_user.id) %>
-    <p><%= image_tag doc.document.url(:thumb) %></p>
+    <%= link_to "#{image_tag doc.document.url(:thumb)}".html_safe, "#{doc.document.url()}", :target => "_blank"%>
   <%end%> 
 </div>
