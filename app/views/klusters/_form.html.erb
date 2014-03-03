@@ -18,10 +18,10 @@
 	<%= f.label :documents, 'Photos in Kluster', :class => 'gfield_label' %>
 	
 	<% for doc in KlusterDocument.where(:kluster_id => params[:id]) %>
-			 <li><%= link_to doc.document_file_name, "#{root_url}#{doc.document.url()}", :target => "_blank"%></li>
+			 <%= link_to "#{image_tag doc.document.url(:thumb)}".html_safe, "#{doc.document.url()}", :target => "_blank"%>
 	<%end%>
-	<br/>
-	<%= f.label :documents, "Documents (4MB Max)", :class => 'gfield_label' %> 	
+	<br/><br/>
+	<%= f.label :documents, "Upload a Photo", :class => 'gfield_label' %> 	
 	<%= f.fields_for :kluster_documents do |s| %>
     <% if s.object.new_record? %>
       <p id="file-uploads">
