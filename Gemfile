@@ -70,3 +70,4 @@ gem 'aws-sdk'
 gem "jquery-fileupload-rails"
 gem "font-awesome-rails"
 gem 'jquery-ui-rails'
+gem 'jquery-turbolinks'
