@@ -71,3 +71,5 @@ gem "jquery-fileupload-rails"
 gem "font-awesome-rails"
 gem 'jquery-ui-rails'
 gem 'jquery-turbolinks'
+
+gem 'simplecov', :require => false, :group => :test
