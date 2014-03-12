@@ -1,0 +1,14 @@
+<div class="button-bar">
+  <span class="button-bar-title">My Klusters</span>
+  <%= link_to 'My Photos', klusters_path, :class => "small button" %>
+  <%= link_to 'Create a Kluster', new_kluster_path, :class => "small button" %>
+</div>
+<div>
+  <% if !@klusters.nil?%>
+    <ul>
+      <% @klusters.each do |kluster| %>
+        <li><%= link_to kluster.name, kluster %></li>
+      <% end %>
+    </ul>
+  <%end%>
+</div>

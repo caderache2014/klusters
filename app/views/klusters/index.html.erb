@@ -1,34 +1,10 @@
-<h1>Listing klusters</h1>
-
-<table style="width:100%">
-  <thead>
-    <tr>
-      <th style="text-align:left;width:9em;">Document</th>
-      <th style="text-align:left;width:10em">Name</th>
-      <th style="width:10em">Title</th>
-      <th style="width:25em">Description</th>
-       <th style="width:2em"></th>
-      <th style="width:2em"></th>
-      <th style="width:2em"></th>
-
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @klusters.each do |kluster| %>
-      <tr>
-				<td><%=image_tag kluster.document.url(:thumb)%>
-				<td><%=kluster.name%>
-				<td><%=kluster.document_title%>
-				<td><%=kluster.document_description%>
-        <td><%= link_to 'Show', kluster %></td>
-        <td><%= link_to 'Edit', edit_kluster_path(kluster) %></td>
-        <td><%= link_to 'Destroy', kluster, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Kluster', new_kluster_path %>
+<div class="button-bar">
+  <span class="button-bar-title">My Photos</span>
+  <%= link_to 'My Klusters', my_klusters_path, :class => "small button" %>
+  <%= link_to 'Create a Kluster', new_kluster_path, :class => "small button" %>
+</div>
+<div>
+  <% for doc in KlusterDocument.where(:user_id => current_user.id) %>
+    <%= link_to "#{image_tag doc.document.url(:thumb)}".html_safe, "#{doc.document.url()}", :target => "_blank"%>
+  <%end%> 
+</div>

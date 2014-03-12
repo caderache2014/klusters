@@ -10,27 +10,39 @@
       </ul>
     </div>
   <% end %>
-	<div id="base" style="width:40em;">
-		<div class="field">
-  	  <%= f.label :name %><br />
-  	  <%= f.text_field :name %>
-  	</div>
-  	<div class="field">
-  	  <%= f.label :document_title %><br />
-  	  <%= f.text_field :document_title %>
-  	</div>
-  	<div class="field">
-  	  <%= f.label :document_description %><br />
-  	  <%= f.text_field :document_description %>
-  	</div>
- 		<div class="field">
-			<%= f.label :documents, 'Upload Document', :class => 'gfield_label' %> <span style="color: #C31E2D;"> (4 MB maximum size per attachment)</span>.
-		</div>
- 		<div class="field">		
-			<%= f.file_field :document %></p>
-		</div>		
-  	<div class="actions">
-  	  <%= f.submit %>
-  	</div>
-	</div>
+
+  <div class="field">
+    <%= f.label :name, "Kluster Name" %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div id="kluster-photos">
+    <%= f.label :documents, 'Photos in Kluster', :class => 'gfield_label' %>
+    <% for doc in KlusterDocument.where(:kluster_id => params[:id]) %>
+      <div class="kluster-photo" style="display: inline;">
+        <%= link_to "#{image_tag doc.document.url(:thumb)}".html_safe, "#{doc.document.url()}", :target => "_blank"%>
+        <i class="fa fa-ban delete-photo"> Delete</i>
+      </div>
+    <%end%>
+  </div>
+  <br />
+  <div id="upload-photos">
+    <%= f.fields_for :kluster_documents do |s| %>
+      <% if s.object.new_record? %>
+        <%= s.file_field :document, :name => 'kluster[kluster_documents_attributes][0][document]', :multiple => true %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="actions">
+     <div>
+        <%= f.submit (f.object.new_record? ? "Create Kluster" : "Update Kluster"), :class => "small button" %>
+        <%= link_to 'Back', f.object.new_record? ? klusters_path : @kluster, :class => "small button" %>
+     </div>
+  </div>
 <% end %>
+
+<script id="template-upload" type="text/x-tmpl">
+  <div class="upload">
+    {%=o.name%}
+    <div class="progress"></div>
+  </div>
+</script>

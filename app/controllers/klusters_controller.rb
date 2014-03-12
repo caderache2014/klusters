@@ -4,7 +4,11 @@ class KlustersController < ApplicationController
   # GET /klusters
   # GET /klusters.json
   def index
-    @klusters = Kluster.all
+    @klusters = Kluster.where("user_id = '#{current_user.id}'")
+  end
+  
+  def my_klusters
+    @klusters = Kluster.where("user_id = '#{current_user.id}'")
   end
 
   # GET /klusters/1
@@ -15,19 +19,24 @@ class KlustersController < ApplicationController
   # GET /klusters/new
   def new
     @kluster = Kluster.new
-    #1.times {@kluster.documents.build }
-    
+    1.times{@kluster.kluster_documents.build}
   end
 
   # GET /klusters/1/edit
   def edit
+    @kluster = Kluster.find(params[:id])
+    1.times{@kluster.kluster_documents.build}
+    
   end
 
   # POST /klusters
   # POST /klusters.json
   def create
     @kluster = Kluster.new(kluster_params)
-
+    @kluster.user_id = current_user.id
+    @kluster.kluster_documents.each do |doc|
+      doc.user_id ||= @kluster.user_id
+    end
     respond_to do |format|
       if @kluster.save
         format.html { redirect_to @kluster, notice: 'Kluster was successfully created.' }
@@ -44,8 +53,12 @@ class KlustersController < ApplicationController
   def update
     respond_to do |format|
       if @kluster.update(kluster_params)
+        @kluster.kluster_documents.each do |doc|
+          doc.user_id ||= @kluster.user_id
+        end
+        @kluster.save
         format.html { redirect_to @kluster, notice: 'Kluster was successfully updated.' }
-        format.json { head :no_content }
+        format.json { render json: @kluster }
       else
         format.html { render action: 'edit' }
         format.json { render json: @kluster.errors, status: :unprocessable_entity }
@@ -71,10 +84,6 @@ class KlustersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def kluster_params
-      #params[:kluster]
-      #Xparams.require(:kluster).permit(:name,:document_title,:documents,params[:kluster][:documents_attributes])      
-      params.require(:kluster).permit(:name,:document_title,:document)
-      #!params.require(:kluster).permit!
-      
+      params.require(:kluster).permit(:name, :description, :kluster_documents_attributes =>[:id,:document])
     end
 end

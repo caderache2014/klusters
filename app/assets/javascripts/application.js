@@ -11,9 +11,28 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require foundation
 //= require turbolinks
+//= require jquery-fileupload/basic
+//= require jquery-fileupload/vendor/tmpl
+//= require jquery.ui.all
 //= require_tree .
+
+function renderProgressBars() {
+  $(".progress").progressbar({
+    value: 0
+  });
+  $("input[name='kluster[kluster_documents_attributes][0][document]']").css('visibility','hidden');
+}
+
+function completeProgressBars() {
+  $(".progress").progressbar({
+    value: 100
+  });
+  $(".upload").css('visibility','hidden');
+  $(".progress").css('visibility','hidden');
+}
 
 $(function(){ $(document).foundation(); });

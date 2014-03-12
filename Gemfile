@@ -1,10 +1,8 @@
 source 'https://rubygems.org'
+ruby '2.1.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
-
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -19,6 +17,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'paperclip'
 # Use rspec2minitest for testing with minitest
 gem 'rspec2minitest'
+# gem 'protected_attributes'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
@@ -49,16 +48,28 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-# Use capybara and poltergeist for test purposes
-gem "minitest-rails-capybara"
-gem 'poltergeist', group: [:development, :test]
-
 # Use rubocop so we can strive for clean code
 gem 'rubocop', group: [:development, :test]
 
-group :development, :test do
-  gem 'minitest-rails'
+gem 'minitest-rails'
+gem "minitest-rails-capybara"
+gem 'poltergeist'
+
+group :development do
+  gem "sqlite3"
 end
 
-gem 'zurb-foundation'
+group :production do
+  gem "rails_12factor"
+  gem "pg"
+end
+
+gem 'foundation-rails'
 gem 'devise'
+gem 'aws-sdk'
+gem "jquery-fileupload-rails"
+gem "font-awesome-rails"
+gem 'jquery-ui-rails'
+gem 'jquery-turbolinks'
+
+gem 'simplecov', :require => false, :group => :test

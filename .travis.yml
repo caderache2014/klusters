@@ -1,0 +1,9 @@
+language: ruby
+rvm:
+- 2.1.0
+deploy:
+  provider: heroku
+  api_key:
+    secure: UB+tD70tBgaV7pKaA/FBCpUDQE6ol7vDJih6awUx1vNORIa2GhjXnF9PJgbEdhxb0m87RM+El+Dr/sNXiz82p+ACxMiMnE+y4ICM5OIqlRWkohXMiRf07JMuOt85MC1OOkVVJpZyOOJRNhrziE8LKZaoacl2Nm+qfc3lNhrkbl0=
+  app: klusters
+  run: "rake db:migrate"
