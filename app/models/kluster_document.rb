@@ -20,7 +20,7 @@ class KlusterDocument < ActiveRecord::Base
   validates_attachment :document,
     :presence => true,
     :size => { :in => 0..10.megabytes },
-    :content_type => { :content_type => /^image\/(jpeg|png|gif|tiff)$/ }
+    :content_type => { :content_type => /^image\/(jpeg|png|gif|tiff|pdf)$/ }
 
   # validates :name,
   #  :presence => true,
